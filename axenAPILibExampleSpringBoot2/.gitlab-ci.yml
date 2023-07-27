@@ -1,0 +1,121 @@
+variables:
+  # Common vars
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+  # Ansible vars
+  ANSIBLE_FORCE_COLOR: 'true'
+  ANSIBLE_STDOUT_CALLBACK: 'yaml'
+  ANSIBLE_CONFIG_LOCATION: ${CI_PROJECT_DIR}/ansible/ansible/ansible.cfg
+  # App vars
+  VERSION: 0.0.1
+
+stages:
+  - build_jar
+  - build_image
+  - deploy
+  - publish
+
+cache:
+  key: ${CI_PIPELINE_ID}
+  paths:
+    - .gradle
+    - build
+    - api/build
+
+build_jar:
+  stage: build_jar
+  image: 
+    name: nexus.ru-central1.internal:5000/openjdk:11.0.9-jdk
+  before_script:
+    - export GRADLE_USER_HOME=`pwd`/.gradle
+    - groupadd initpg
+    - useradd -s /bin/bash -m -d /tmp/initpg -g initpg initpg
+    - chown -R initpg:initpg  ${CI_PROJECT_DIR}/*
+  script:
+    - runuser -u initpg -- ./gradlew build --refresh-dependencies --scan
+  rules:
+    - if: $CI_COMMIT_REF_NAME == "develop"
+  artifacts:
+    paths:
+      - build
+      - api/build
+    when: always
+    expire_in: 3 days
+  retry:
+    max: 2
+    when:
+      - runner_system_failure
+      - job_execution_timeout
+      - unknown_failure
+  tags:
+    - openshift
+    - internal
+
+build_image:
+  stage: build_image
+  image:
+    name: nexus.ru-central1.internal:5000/kaniko:latest
+    entrypoint: [""]
+  variables:
+    DOCKER_IMAGE: "$SOURCE_REGISTRY/$CI_PROJECT_NAME"
+  script:
+    - mkdir -p /kaniko/.docker
+    - KANIKOPROXYBUILDARGS="--build-arg SOURCE_REGISTRY=$SOURCE_REGISTRY --build-arg BASE_IMAGE=$BASE_IMAGE"
+    - echo "{\"auths\":{\"$SOURCE_REGISTRY\":{\"username\":\"$NEXUS_USER\",\"password\":\"$NEXUS_PASSWORD\"}}}" > /kaniko/.docker/config.json
+    - /kaniko/executor --insecure --skip-tls-verify --context ${CI_PROJECT_DIR} --dockerfile ${CI_PROJECT_DIR}/Dockerfile $KANIKOPROXYBUILDARGS --destination $DOCKER_IMAGE:$VERSION
+  rules:
+    - if: $CI_COMMIT_REF_NAME == "develop"
+  retry:
+    max: 2
+    when:
+      - runner_system_failure
+      - job_execution_timeout
+      - unknown_failure
+  tags:
+    - openshift
+    - internal
+
+deploy:
+  stage: deploy
+  image: 
+    name: nexus.ru-central1.internal:5000/deploy-image-yc-cli:latest
+  script:
+    - export $(cat build/version.properties | xargs)
+    - git clone -b master ${CI_SERVER_PROTOCOL}://gitlab-ci-token:${CI_JOB_TOKEN}@${CI_SERVER_HOST}/${DEPLOY_PROJECT} ansible
+    - INVENTORY_TAG=$(git --git-dir ./ansible/.git rev-parse --short HEAD)
+    - ansible-playbook -i ansible/inventory/hosts --extra-vars "MODULE=${CI_PROJECT_NAME} PROJECT_NAME=${CI_COMMIT_REF_NAME} IMAGE_REGISTRY=${IMAGE_REGISTRY} IMAGE_TAG=${VERSION} VERSION=${VERSION} COMMIT_TAG=${CI_COMMIT_SHORT_SHA} INVENTORY_TAG=${INVENTORY_TAG}" ansible/deploy.yml
+  rules:
+    - if: $CI_COMMIT_REF_NAME == "develop"
+  artifacts:
+    paths:
+      - ansible/Deploy.yml
+    when: always
+    expire_in: 3 days
+  retry:
+    max: 2
+    when:
+      - runner_system_failure
+      - job_execution_timeout
+      - unknown_failure
+  tags:
+    - openshift
+    - internal
+
+publish:
+  stage: publish
+  image: 
+    name: nexus.ru-central1.internal:5000/openjdk:11.0.9-jdk
+  before_script:
+    - export GRADLE_USER_HOME=`pwd`/.gradle
+  script:
+    - ./gradlew publish
+  rules:
+    - if: $CI_COMMIT_REF_NAME == "develop"
+  retry:
+    max: 2
+    when:
+      - runner_system_failure
+      - job_execution_timeout
+      - unknown_failure
+  tags:
+    - openshift
+    - internal

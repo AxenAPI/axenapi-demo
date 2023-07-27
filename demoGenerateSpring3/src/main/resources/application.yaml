@@ -1,0 +1,9 @@
+spring:
+  kafka:
+    bootstrap-servers: localhost:29092
+#    producer:
+#      transaction-id-prefix: "test"
+#      #value-serializer: "org.springframework.kafka.support.serializer.JsonSerializer"
+
+
+swagger4kafka.enabled: true
