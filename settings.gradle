@@ -20,8 +20,25 @@ pluginManagement {
         }
     }
 }
+
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+        maven {
+            allowInsecureProtocol = true
+            url "${NEXUS_SERVER}"
+            credentials {
+                username NEXUS_USER
+                password NEXUS_PASSWORD
+            }
+        }
+
+    }
+}
+
 rootProject.name = 'demo'
 include 'axenAPILibExampleSpringBoot2'
-include 'swagger4kafka'
+include 'axenapigeneratorSpringBoot2'
 include 'demoSpring31'
 include 'demoGenerateSpring3'

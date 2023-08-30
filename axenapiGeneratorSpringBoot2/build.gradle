@@ -2,7 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '2.7.5'
     id 'io.spring.dependency-management' version '1.0.15.RELEASE'
-    id 'swagger4KafkaGradlePlugin' version '1.0.0-SNAPSHOT'
+    id 'axenapi-generator-plugin' version '1.0.0-SNAPSHOT'
 }
 
 sourceSets {
@@ -15,24 +15,13 @@ sourceSets {
         }
     }
 }
-// generate listeners
-//codegenData {
-//    openApiPath =  getProjectDir().getAbsolutePath() + '/src/main/resources/json.json'
-//    outDir = getProjectDir().getAbsolutePath() + '/build'
-//    srcDir = 'src/main/java'
-//    listenerPackage = 'swagger4kafka.listener'
-//    modelPackage = 'swagger4kafka.model'
-//    kafkaClient = false
-//    interfaceOnly = false
-//    resultWrapper = 'java.util.concurrent.CompletableFuture'
-//}
-// generate Clients
+
 codegenData {
-    openApiPath =  getProjectDir().getAbsolutePath() + '/src/main/resources/test.json'
+    openApiPath =  getProjectDir().getAbsolutePath() + '/src/main/resources/joker.json'
     outDir = getProjectDir().getAbsolutePath() + '/build'
     srcDir = 'src/main/java'
-    listenerPackage = 'swagger4kafka.client'
-    modelPackage = 'swagger4kafka.model'
+    listenerPackage = 'axenapi.generated'
+    modelPackage = 'axenapi.generated.model'
     kafkaClient = true
     interfaceOnly = false
 }
@@ -42,30 +31,16 @@ version '0.0.1-SNAPSHOT'
 
 sourceSets.main.java.srcDirs += ['build/src/main/java']
 
-repositories {
-   // mavenLocal()
-    mavenCentral()
-    maven {
-        allowInsecureProtocol = true
-        url "${NEXUS_SERVER}"
-        credentials {
-            username NEXUS_USER
-            password NEXUS_PASSWORD
-        }
-    }
-}
-
 dependencies {
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation "org.springframework.boot:spring-boot-devtools"
     implementation "org.projectlombok:lombok:1.18.26"
+
+    annotationProcessor "org.axenix:axenapi:1.0.0-SNAPSHOT"
+    implementation ("org.axenix:axenapi:1.0.0-SNAPSHOT")
+
     testImplementation "org.springframework.boot:spring-boot-starter-test"
-//    testImplementation "org.springframework.kafka:spring-kafka-test"
-
-//    annotationProcessor "org.axenix:swagger4kafka:2.0.22-SNAPSHOT"
-//    implementation "org.axenix:swagger4kafka:2.0.22-SNAPSHOT"
-
     implementation "org.springframework.kafka:spring-kafka"
     implementation "io.swagger.core.v3:swagger-annotations:2.2.8"
     implementation "com.squareup:javapoet:1.13.0"

@@ -7,7 +7,6 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.axenix.swagger4kafka.annotation.utils.KafkaMessage4Swagger;
 
 import java.io.Serializable;
 
@@ -15,7 +14,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Schema(description = "DTO for chief creating")
-public class Chief extends KafkaMessage4Swagger implements Serializable {
+public class Chief implements Serializable {
     @NotBlank
     @Size(max = 20, min = 3)
     @Schema(description = "chief name")

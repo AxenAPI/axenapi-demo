@@ -23,19 +23,6 @@ configurations {
     }
 }
 
-repositories {
-    mavenCentral()
-    mavenLocal()
-    maven {
-        allowInsecureProtocol = true
-        url "${NEXUS_SERVER}"
-        credentials {
-            username NEXUS_USER
-            password NEXUS_PASSWORD
-        }
-    }
-}
-
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-web'
