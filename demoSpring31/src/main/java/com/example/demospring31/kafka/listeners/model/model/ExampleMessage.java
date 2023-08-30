@@ -5,14 +5,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.axenix.swagger4kafka.annotation.utils.KafkaMessage4Swagger;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
 @Getter
 @Schema(description = "example message")
-public class ExampleMessage extends KafkaMessage4Swagger {
+public class ExampleMessage {
     @Schema(description = "example field")
     private String message;
 }

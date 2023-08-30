@@ -1,0 +1,79 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "App API",
+    "version": "snapshot"
+  },
+  "servers": [
+    {
+      "url": "http://demokafka4swagger.develop.apps.okd4.okd4-cluster",
+      "description": "Generated server url"
+    }
+  ],
+  "paths": {
+    "/kafka/example_group/example_topic/ExampleIn": {
+      "post": {
+        "description": "example handler",
+        "operationId": "ExampleHandler",
+        "tags": ["example"],
+        "security": [{
+          "Internal-Token": []
+        }],
+        "requestBody": {
+          "description": "Example in",
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/ExampleIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Example out",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExampleOut"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+  },
+  "components": {
+    "schemas": {
+      "ExampleIn": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "example field"
+          }
+        },
+        "description": "example message"
+      },
+      "ExampleOut": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "example field"
+          }
+        },
+        "description": "example message"
+      }
+    },
+    "securitySchemes": {
+      "Internal-Token": {
+        "type": "apiKey",
+        "name": "SERVICE_ACCESS_TOKEN",
+        "in": "header"
+      }
+    }
+  }
+}

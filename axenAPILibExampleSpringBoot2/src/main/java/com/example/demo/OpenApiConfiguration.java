@@ -28,13 +28,13 @@ public class OpenApiConfiguration {
                 .info(new Info().title("App API").version("snapshot"));
     }
     @Bean
-    GroupedOpenApi restApis() {
+    GroupedOpenApi kafkaApis() {
         return GroupedOpenApi.builder().group("kafka")
                 .pathsToMatch("/**/kafka/**").build();
     }
 
     @Bean
-    GroupedOpenApi kafkaApis() {
+    GroupedOpenApi restApis() {
         return GroupedOpenApi.builder().group("rest")
                 .pathsToMatch("/**/users/**").build();
     }

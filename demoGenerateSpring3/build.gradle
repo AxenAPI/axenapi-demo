@@ -2,7 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.1.0'
     id 'io.spring.dependency-management' version '1.1.0'
-    id 'swagger4KafkaGradlePlugin' version '1.0.0-SNAPSHOT'
+    id 'axenapi-generator-plugin' version '1.0.0-SNAPSHOT'
 }
 
 group = 'com.example'
@@ -13,11 +13,6 @@ configurations {
     compileOnly {
         extendsFrom annotationProcessor
     }
-}
-
-repositories {
-    mavenCentral()
-    mavenLocal()
 }
 
 dependencies {
@@ -52,14 +47,14 @@ sourceSets {
 }
 // generate listeners
 codegenData {
-    openApiPath =  getProjectDir().getAbsolutePath() + '/src/main/resources/json.json'
+    openApiPath =  getProjectDir().getAbsolutePath() + '/src/main/resources/test.json'
     outDir = getProjectDir().getAbsolutePath() + '/build'
     srcDir = 'src/main/java'
     listenerPackage = 'swagger4kafka.listener'
     modelPackage = 'swagger4kafka.model'
     kafkaClient = false
     interfaceOnly = false
-    resultWrapper = 'java.util.concurrent.CompletableFuture'
+    //resultWrapper = 'java.util.concurrent.CompletableFuture'
 }
 //// generate Clients
 //codegenData {
