@@ -5,8 +5,13 @@ spring:
     bootstrap-servers: localhost:29092
     consumer:
       group-id: demo_example
-swagger4kafka.enabled: true
-swagger4kafka.headers.sendBytes: true
+
+axenapi:
+  kafka:
+    swagger:
+      enabled: true
+  headers:
+    sendBytes: true
 
 springdoc:
   api-docs:

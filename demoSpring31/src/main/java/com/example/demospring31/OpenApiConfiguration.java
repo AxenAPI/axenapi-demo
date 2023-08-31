@@ -25,6 +25,11 @@ public class OpenApiConfiguration {
                                         .bearerFormat("JWT")
                                         .in(SecurityScheme.In.HEADER)
                                         .name("SERVICE_ACCESS_TOKEN"))
+                        .addSecuritySchemes("test_security_scheme",
+                                new SecurityScheme().type(SecurityScheme.Type.APIKEY)
+                                        .bearerFormat("JWT")
+                                        .in(SecurityScheme.In.HEADER)
+                                        .name("SERVICE_ACCESS_TOKEN"))
                 )
                 .info(new Info().title("App API").version("snapshot"));
     }
