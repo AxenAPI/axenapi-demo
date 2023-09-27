@@ -6,7 +6,7 @@
   },
   "servers": [
     {
-      "url": "http://demokafka4swagger.develop.apps.okd4.okd4-cluster",
+      "url": "http://example.example",
       "description": "Generated server url"
     }
   ],

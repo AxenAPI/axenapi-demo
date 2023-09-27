@@ -4,12 +4,6 @@
     "title": "App API",
     "version": "snapshot"
   },
-  "servers": [
-    {
-      "url": "http://demokafka4swagger.develop.apps.okd4.okd4-cluster",
-      "description": "Generated server url"
-    }
-  ],
   "paths": {
     "/kafka/my_annotation/my_annotation/ExampleMessage": {
       "post": {
