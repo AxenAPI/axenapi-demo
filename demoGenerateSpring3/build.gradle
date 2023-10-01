@@ -29,6 +29,10 @@ dependencies {
     // https://mvnrepository.com/artifact/org.openapitools/jackson-databind-nullable
     implementation 'org.openapitools:jackson-databind-nullable:0.2.6'
 
+    //	swagger for kafka
+    annotationProcessor "org.axenix:axenapi-spring6:1.0.0-SNAPSHOT"
+    implementation ("org.axenix:axenapi-spring6:1.0.0-SNAPSHOT")
+
 }
 
 tasks.named('test') {
@@ -54,6 +58,7 @@ codegenData {
     modelPackage = 'swagger4kafka.model'
     kafkaClient = false
     interfaceOnly = false
+    useSpring3 = true
     //resultWrapper = 'java.util.concurrent.CompletableFuture'
 }
 //// generate Clients
