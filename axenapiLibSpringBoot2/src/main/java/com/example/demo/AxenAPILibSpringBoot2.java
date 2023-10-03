@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AxenAPILibExampleSpringBoot2 {
+public class AxenAPILibSpringBoot2 {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AxenAPILibExampleSpringBoot2.class, args);
+		SpringApplication.run(AxenAPILibSpringBoot2.class, args);
 	}
 
 }

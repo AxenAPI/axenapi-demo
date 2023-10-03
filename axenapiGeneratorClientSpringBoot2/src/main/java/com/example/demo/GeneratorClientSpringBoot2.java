@@ -5,8 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 //@ComponentScan(basePackages = {"com.example.demo","swagger4kafka.client"})
-public class GenerateSpringBoot2 {
+public class GeneratorClientSpringBoot2 {
     public static void main(String[] args) {
-        SpringApplication.run(GenerateSpringBoot2.class, args);
+        SpringApplication.run(GeneratorClientSpringBoot2.class, args);
     }
 }
