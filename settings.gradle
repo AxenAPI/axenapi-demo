@@ -34,7 +34,9 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = 'demo'
-include 'axenAPILibExampleSpringBoot2'
-include 'axenapigeneratorSpringBoot2'
-include 'demoSpring31'
-include 'demoGenerateSpring3'
+include 'axenapilibspringboot2'
+include 'axenapilibspringboot3'
+include 'axenapigeneratorclientspringboot2'
+include 'axenapigeneratorserverspringboot2'
+include 'axenapigeneratorclientspringboot3'
+include 'axenapigeneratorserverspringboot3'
