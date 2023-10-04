@@ -1,9 +1,11 @@
+
 spring:
   kafka:
     bootstrap-servers: localhost:29092
 #    consumer:
 #      properties:
 #        spring.json.trusted.packages: "swagger4kafka.model"
-
+server:
+  port: 8081
 
 
