@@ -28,11 +28,6 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.openapitools/jackson-databind-nullable
     implementation 'org.openapitools:jackson-databind-nullable:0.2.6'
-
-    //	swagger for kafka
-    annotationProcessor "org.axenix:axenapi-spring6:1.0.0-SNAPSHOT"
-    implementation ("org.axenix:axenapi-spring6:1.0.0-SNAPSHOT")
-
 }
 
 tasks.named('test') {
@@ -51,11 +46,11 @@ sourceSets {
 }
 // generate listeners
 codegenData {
-    openApiPath =  getProjectDir().getAbsolutePath() + '/src/main/resources/test.json'
+    openApiPath =  getProjectDir().getAbsolutePath() + '/src/main/resources/joker.json'
     outDir = getProjectDir().getAbsolutePath() + '/build'
     srcDir = 'src/main/java'
-    listenerPackage = 'swagger4kafka.listener'
-    modelPackage = 'swagger4kafka.model'
+    listenerPackage = 'axenapi.generated'
+    modelPackage = 'axenapi.generated.model'
     kafkaClient = true
     interfaceOnly = false
     useSpring3 = true
