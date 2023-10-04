@@ -1,7 +1,7 @@
 package com.example.demo.kafka.configuration;
 
 
-import swagger4kafka.model.Chief;
+import axenapi.model.Chief;
 import com.example.demo.kafka.model.Subordinate;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;

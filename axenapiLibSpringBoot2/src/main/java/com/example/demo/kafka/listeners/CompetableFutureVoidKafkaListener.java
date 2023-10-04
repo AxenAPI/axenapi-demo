@@ -1,6 +1,6 @@
 package com.example.demo.kafka.listeners;
 
-import swagger4kafka.model.Chief;
+import axenapi.model.Chief;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaHandler;

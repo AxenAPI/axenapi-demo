@@ -6,4 +6,3 @@ spring:
 #      #value-serializer: "org.springframework.kafka.support.serializer.JsonSerializer"
 
 
-swagger4kafka.enabled: true

@@ -1,7 +1,7 @@
 package unstable.jms.listener;
 
 
-import swagger4kafka.model.Chief;
+import axenapi.model.Chief;
 import com.example.demo.kafka.model.Subordinate;
 import org.apache.activemq.Message;
 import org.springframework.jms.annotation.JmsListener;

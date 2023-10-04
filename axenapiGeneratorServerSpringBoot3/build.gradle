@@ -54,26 +54,13 @@ codegenData {
     openApiPath =  getProjectDir().getAbsolutePath() + '/src/main/resources/joker.json'
     outDir = getProjectDir().getAbsolutePath() + '/build'
     srcDir = 'src/main/java'
-    listenerPackage = 'swagger4kafka.listener'
-    modelPackage = 'swagger4kafka.model'
+    listenerPackage = 'axenapi.generated'
+    modelPackage = 'axenapi.generated.model'
     kafkaClient = false
     interfaceOnly = false
     useSpring3 = true
     //resultWrapper = 'java.util.concurrent.CompletableFuture'
 }
-//// generate Clients
-//codegenData {
-//    openApiPath =  getProjectDir().getAbsolutePath() + '/src/main/resources/test.json'
-//    outDir = getProjectDir().getAbsolutePath() + '/build'
-//    srcDir = 'src/main/java'
-//    listenerPackage = 'swagger4kafka.client'
-//    modelPackage = 'swagger4kafka.model'
-//    kafkaClient = true
-//    interfaceOnly = false
-//    useSpring3 = true
-//    resultWrapper
-//}
-
 
 compileJava {
     dependsOn "generateKafka"

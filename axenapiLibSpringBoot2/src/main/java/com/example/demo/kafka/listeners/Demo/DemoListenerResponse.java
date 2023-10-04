@@ -10,7 +10,7 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.messaging.handler.annotation.Headers;
 import org.springframework.messaging.handler.annotation.Payload;
-import swagger4kafka.model.Chief;
+import axenapi.model.Chief;
 
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
