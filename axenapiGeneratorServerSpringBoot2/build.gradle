@@ -22,8 +22,9 @@ codegenData {
     srcDir = 'src/main/java'
     listenerPackage = 'axenapi.generated'
     modelPackage = 'axenapi.generated.model'
-    kafkaClient = true
+    kafkaClient = false
     interfaceOnly = false
+    useSpring3 = false
 }
 
 group 'org.example'
