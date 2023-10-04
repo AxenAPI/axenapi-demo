@@ -1,0 +1,60 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.7.5'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+    id 'axenapi-generator-plugin' version '1.0.0-SNAPSHOT'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs '/build/src/main/java'
+        }
+        resources {
+            srcDir '/build/src/main/resources'
+        }
+    }
+}
+
+codegenData {
+    openApiPath =  getProjectDir().getAbsolutePath() + '/src/main/resources/joker.json'
+    outDir = getProjectDir().getAbsolutePath() + '/build'
+    srcDir = 'src/main/java'
+    listenerPackage = 'axenapi.generated'
+    modelPackage = 'axenapi.generated.model'
+    kafkaClient = true
+    interfaceOnly = false
+}
+
+group 'org.example'
+version '0.0.1-SNAPSHOT'
+
+sourceSets.main.java.srcDirs += ['build/src/main/java']
+
+dependencies {
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation "org.projectlombok:lombok:1.18.26"
+
+    annotationProcessor "org.axenix:axenapi:1.0.0-SNAPSHOT"
+    implementation ("org.axenix:axenapi:1.0.0-SNAPSHOT")
+
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
+    implementation "org.springframework.kafka:spring-kafka"
+    implementation "io.swagger.core.v3:swagger-annotations:2.2.8"
+    implementation "com.squareup:javapoet:1.13.0"
+    implementation "org.openapitools:jackson-databind-nullable:0.2.6"
+    implementation "javax.validation:validation-api:2.0.1.Final"
+    implementation "javax.annotation:javax.annotation-api:1.3.2"
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+compileJava {
+    dependsOn "generateKafka"
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

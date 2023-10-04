@@ -1,0 +1,9 @@
+spring:
+  kafka:
+    bootstrap-servers: localhost:29092
+#    consumer:
+#      properties:
+#        spring.json.trusted.packages: "axenapi.model"
+
+
+
