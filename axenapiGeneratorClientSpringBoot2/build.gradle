@@ -37,9 +37,6 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-web"
     implementation "org.projectlombok:lombok:1.18.26"
 
-    annotationProcessor "org.axenix:axenapi:1.0.0-SNAPSHOT"
-    implementation ("org.axenix:axenapi:1.0.0-SNAPSHOT")
-
     testImplementation "org.springframework.boot:spring-boot-starter-test"
     implementation "org.springframework.kafka:spring-kafka"
     implementation "io.swagger.core.v3:swagger-annotations:2.2.8"
