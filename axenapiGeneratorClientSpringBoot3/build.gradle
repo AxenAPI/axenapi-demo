@@ -56,7 +56,7 @@ codegenData {
     srcDir = 'src/main/java'
     listenerPackage = 'swagger4kafka.listener'
     modelPackage = 'swagger4kafka.model'
-    kafkaClient = false
+    kafkaClient = true
     interfaceOnly = false
     useSpring3 = true
     //resultWrapper = 'java.util.concurrent.CompletableFuture'
