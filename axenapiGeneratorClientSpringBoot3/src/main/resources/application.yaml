@@ -4,6 +4,3 @@ spring:
 #    producer:
 #      transaction-id-prefix: "test"
 #      #value-serializer: "org.springframework.kafka.support.serializer.JsonSerializer"
-
-
-swagger4kafka.enabled: true
