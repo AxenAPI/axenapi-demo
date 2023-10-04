@@ -3,9 +3,7 @@ package com.example.demo.kafka.listeners;
 
 import com.example.demo.annotation.MyKafkaHandler;
 import org.axenix.axenapi.annotation.*;
-import org.springframework.kafka.support.KafkaHeaders;
-import org.springframework.messaging.handler.annotation.Header;
-import swagger4kafka.model.Chief;
+import axenapi.model.Chief;
 import com.example.demo.kafka.model.Subordinate;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaHandler;

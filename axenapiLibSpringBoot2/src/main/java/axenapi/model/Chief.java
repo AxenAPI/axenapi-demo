@@ -1,4 +1,4 @@
-package swagger4kafka.model;
+package axenapi.model;
 
 
 import io.swagger.v3.oas.annotations.media.Schema;
