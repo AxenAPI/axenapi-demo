@@ -11,17 +11,10 @@ pluginManagement {
         mavenLocal()
         gradlePluginPortal()
         maven {
-            allowInsecureProtocol = true
-            url System.getenv('NEXUS_SERVER_URL_SNAPSHOT').toString()
-            credentials.setUsername(System.getenv('NEXUS_USER').toString())
-            credentials.setPassword(System.getenv('NEXUS_PASSWORD').toString())
-        }
-
-        maven {
-            allowInsecureProtocol = true
-            url System.getenv('NEXUS_SERVER_URL_RELEASE').toString()
-            credentials.setUsername(System.getenv('NEXUS_USER').toString())
-            credentials.setPassword(System.getenv('NEXUS_PASSWORD').toString())
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/AxenAPI/axenapi-library")
+            credentials.setUsername(getProperties().get("gpr.user") ?: System.getenv("GITHUB_USER"))
+            credentials.setPassword(getProperties().get("gpr.user") ?: System.getenv("GITHUB_TOKEN"))
         }
     }
 }
@@ -31,19 +24,11 @@ dependencyResolutionManagement {
         mavenCentral()
         mavenLocal()
         maven {
-            allowInsecureProtocol = true
-            url System.getenv('NEXUS_SERVER_URL_SNAPSHOT').toString()
-            credentials.setUsername(System.getenv('NEXUS_USER').toString())
-            credentials.setPassword(System.getenv('NEXUS_PASSWORD').toString())
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/AxenAPI/axenapi-library")
+            credentials.setUsername(getProperties().get("gpr.user") ?: System.getenv("GITHUB_USER"))
+            credentials.setPassword(getProperties().get("gpr.user") ?: System.getenv("GITHUB_TOKEN"))
         }
-
-        maven {
-            allowInsecureProtocol = true
-            url System.getenv('NEXUS_SERVER_URL_RELEASE').toString()
-            credentials.setUsername(System.getenv('NEXUS_USER').toString())
-            credentials.setPassword(System.getenv('NEXUS_PASSWORD').toString())
-        }
-
     }
 }
 
