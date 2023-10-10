@@ -2,7 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.1.0'
     id 'io.spring.dependency-management' version '1.1.0'
-    id 'axenapi-generator-plugin' version '1.0.0-SNAPSHOT'
+    id 'axenapi-generator-plugin' version '1.0.1-SNAPSHOT'
 }
 
 group = 'com.example'
@@ -30,8 +30,8 @@ dependencies {
     implementation 'org.openapitools:jackson-databind-nullable:0.2.6'
 
     //	swagger for kafka
-    annotationProcessor "org.axenix:axenapi-spring6:1.0.0-SNAPSHOT"
-    implementation ("org.axenix:axenapi-spring6:1.0.0-SNAPSHOT")
+    annotationProcessor "org.axenix:axenapi-spring6:1.0.1-SNAPSHOT"
+    implementation ("org.axenix:axenapi-spring6:1.0.1-SNAPSHOT")
 
 }
 
