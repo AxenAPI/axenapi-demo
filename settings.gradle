@@ -16,6 +16,18 @@ pluginManagement {
             credentials.setUsername(getProperties().get("gpr.user") ?: System.getenv("GITHUB_USER"))
             credentials.setPassword(getProperties().get("gpr.user") ?: System.getenv("GITHUB_TOKEN"))
         }
+        maven {
+            name = "GitHubPackages-plugin"
+            url = uri("https://maven.pkg.github.com/AxenAPI/axenapi-gradle-plugin")
+            credentials.setUsername(getProperties().get("gpr.user") ?: System.getenv("GITHUB_USER"))
+            credentials.setPassword(getProperties().get("gpr.user") ?: System.getenv("GITHUB_TOKEN"))
+        }
+        maven {
+            name = "GitHubPackages-gen"
+            url = uri("https://maven.pkg.github.com/AxenAPI/axenapi-generator")
+            credentials.setUsername(getProperties().get("gpr.user") ?: System.getenv("GITHUB_USER"))
+            credentials.setPassword(getProperties().get("gpr.user") ?: System.getenv("GITHUB_TOKEN"))
+        }
     }
 }
 
@@ -26,6 +38,18 @@ dependencyResolutionManagement {
         maven {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/AxenAPI/axenapi-library")
+            credentials.setUsername(getProperties().get("gpr.user") ?: System.getenv("GITHUB_USER"))
+            credentials.setPassword(getProperties().get("gpr.user") ?: System.getenv("GITHUB_TOKEN"))
+        }
+        maven {
+            name = "GitHubPackages-plugin"
+            url = uri("https://maven.pkg.github.com/AxenAPI/axenapi-gradle-plugin")
+            credentials.setUsername(getProperties().get("gpr.user") ?: System.getenv("GITHUB_USER"))
+            credentials.setPassword(getProperties().get("gpr.user") ?: System.getenv("GITHUB_TOKEN"))
+        }
+        maven {
+            name = "GitHubPackages-gen"
+            url = uri("https://maven.pkg.github.com/AxenAPI/axenapi-generator")
             credentials.setUsername(getProperties().get("gpr.user") ?: System.getenv("GITHUB_USER"))
             credentials.setPassword(getProperties().get("gpr.user") ?: System.getenv("GITHUB_TOKEN"))
         }
