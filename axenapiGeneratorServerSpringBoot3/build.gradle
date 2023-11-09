@@ -30,8 +30,8 @@ dependencies {
     implementation 'org.openapitools:jackson-databind-nullable:0.2.6'
 
     //	swagger for kafka
-    annotationProcessor "org.axenix:axenapi-spring6:1.0.1-SNAPSHOT"
-    implementation ("org.axenix:axenapi-spring6:1.0.1-SNAPSHOT")
+    annotationProcessor "pro.axenix_innovation:axenapi-spring6:1.0.1-SNAPSHOT"
+    implementation ("pro.axenix_innovation:axenapi-spring6:1.0.1-SNAPSHOT")
 
 }
 

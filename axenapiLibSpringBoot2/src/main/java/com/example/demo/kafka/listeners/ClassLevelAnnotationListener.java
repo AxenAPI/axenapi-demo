@@ -1,9 +1,9 @@
 package com.example.demo.kafka.listeners;
 
 
-import org.axenix.axenapi.annotation.KafkaHandlerDescription;
-import org.axenix.axenapi.annotation.KafkaHandlerTags;
-import org.axenix.axenapi.annotation.KafkaSecured;
+import pro.axenix_innovation.axenapi.annotation.KafkaHandlerDescription;
+import pro.axenix_innovation.axenapi.annotation.KafkaHandlerTags;
+import pro.axenix_innovation.axenapi.annotation.KafkaSecured;
 import axenapi.model.Chief;
 import com.example.demo.kafka.model.Subordinate;
 import org.springframework.kafka.annotation.KafkaHandler;
