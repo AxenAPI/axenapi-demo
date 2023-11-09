@@ -3,12 +3,12 @@ package com.example.demospring31.kafka.listeners.Demo;
 
 import com.example.demospring31.kafka.listeners.model.model.ExampleMessage;
 import com.example.demospring31.kafka.listeners.model.model.Subordinate;
-import org.axenix.axenapi.annotation.KafkaHandlerDescription;
-import org.axenix.axenapi.annotation.KafkaHandlerResponse;
-import org.axenix.axenapi.annotation.KafkaHandlerHeader;
-import org.axenix.axenapi.annotation.KafkaHandlerHeaders;
-import org.axenix.axenapi.annotation.KafkaHandlerTags;
-import org.axenix.axenapi.annotation.KafkaSecured;
+import pro.axenix_innovation.axenapi.annotation.KafkaHandlerDescription;
+import pro.axenix_innovation.axenapi.annotation.KafkaHandlerResponse;
+import pro.axenix_innovation.axenapi.annotation.KafkaHandlerHeader;
+import pro.axenix_innovation.axenapi.annotation.KafkaHandlerHeaders;
+import pro.axenix_innovation.axenapi.annotation.KafkaHandlerTags;
+import pro.axenix_innovation.axenapi.annotation.KafkaSecured;
 import org.springframework.kafka.annotation.KafkaHandler;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.messaging.handler.annotation.Payload;
