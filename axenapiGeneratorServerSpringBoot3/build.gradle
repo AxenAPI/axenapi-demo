@@ -1,8 +1,13 @@
+buildscript {
+    dependencies {
+        classpath "pro.axenix-innovation:axenapi-generator:1.0.3-SNAPSHOT"
+    }
+}
 plugins {
     id 'java'
     id 'org.springframework.boot' version '3.1.0'
     id 'io.spring.dependency-management' version '1.1.0'
-    id 'axenapi-generator-plugin' version '1.0.1-SNAPSHOT'
+    id "org.openapi.generator" version '7.0.0'
 }
 
 group = 'com.example'
@@ -31,7 +36,7 @@ dependencies {
 
     //	swagger for kafka
     annotationProcessor "pro.axenix-innovation:axenapi-spring6:1.0.1-SNAPSHOT"
-    implementation ("pro.axenix-innovation:axenapi-spring6:1.0.1-SNAPSHOT")
+    implementation("pro.axenix-innovation:axenapi-spring6:1.0.1-SNAPSHOT")
 
 }
 
@@ -50,18 +55,38 @@ sourceSets {
     }
 }
 // generate listeners
-codegenData {
-    openApiPath =  getProjectDir().getAbsolutePath() + '/src/main/resources/joker.json'
-    outDir = getProjectDir().getAbsolutePath() + '/build'
-    srcDir = 'src/main/java'
-    listenerPackage = 'axenapi.generated'
-    modelPackage = 'axenapi.generated.model'
-    kafkaClient = false
-    interfaceOnly = false
-    useSpring3 = true
-    //resultWrapper = 'java.util.concurrent.CompletableFuture'
-}
+//codegenData {
+//    openApiPath =  getProjectDir().getAbsolutePath() + '/src/main/resources/joker.json'
+//    outDir = getProjectDir().getAbsolutePath() + '/build'
+//    srcDir = 'src/main/java'
+//    listenerPackage = 'axenapi.generated'
+//    modelPackage = 'axenapi.generated.model'
+//    kafkaClient = false
+//    interfaceOnly = false
+//    useSpring3 = true
+//    resultWrapper = 'java.util.concurrent.CompletableFuture'
+//}
+//compileJava {
+//    dependsOn "generateKafka"
+//}
 
-compileJava {
-    dependsOn "generateKafka"
+openApiGenerate {
+    generatorName = "kafka-codegen"
+    inputSpec = getProjectDir().getAbsolutePath() + '/src/main/resources/joker.json'
+    outputDir = getProjectDir().getAbsolutePath() + '/build'
+    globalProperties = [
+            apis           : "",
+            models         : "",
+            supportingFiles: 'ApiUtil.java'
+    ]
+    skipOverwrite = true
+    configOptions = [
+            useSpringBoot3 : "true",
+            listenerPackage: 'axenapi.generated',
+            modelPackage   : 'axenapi.generated.model',
+            kafkaClient    : "false",
+            interfaceOnly  : "false",
+            useSpring3     : "false",
+            resultWrapper  : "java.util.concurrent.CompletableFuture"
+    ]
 }
