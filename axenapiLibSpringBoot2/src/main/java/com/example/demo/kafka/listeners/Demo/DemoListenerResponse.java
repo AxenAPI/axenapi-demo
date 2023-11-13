@@ -2,9 +2,9 @@ package com.example.demo.kafka.listeners.Demo;
 
 import com.example.demo.dto.ExampleMessage;
 import com.example.demo.kafka.model.Subordinate;
-import org.axenix.axenapi.annotation.KafkaHandlerDescription;
-import org.axenix.axenapi.annotation.KafkaHandlerResponse;
-import org.axenix.axenapi.annotation.KafkaHandlerTags;
+import pro.axenix_innovation.axenapi.annotation.KafkaHandlerDescription;
+import pro.axenix_innovation.axenapi.annotation.KafkaHandlerResponse;
+import pro.axenix_innovation.axenapi.annotation.KafkaHandlerTags;
 import org.springframework.kafka.annotation.KafkaHandler;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.Acknowledgment;
