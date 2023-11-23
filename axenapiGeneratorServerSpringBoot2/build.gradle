@@ -2,7 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '2.7.5'
     id 'io.spring.dependency-management' version '1.0.15.RELEASE'
-    id 'axenapi-generator-plugin' version '1.0.0'
+    id 'pro.axenix-innovation.axenapi.generator' version '1.0.1'
 }
 
 sourceSets {
@@ -38,8 +38,8 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-devtools"
     implementation "org.projectlombok:lombok:1.18.26"
 
-    annotationProcessor "org.axenix:axenapi:1.0.0"
-    implementation ("org.axenix:axenapi:1.0.0")
+    annotationProcessor "org.axenix:axenapi:1.0.1"
+    implementation ("org.axenix:axenapi:1.0.1")
 
     testImplementation "org.springframework.boot:spring-boot-starter-test"
     implementation "org.springframework.kafka:spring-kafka"
