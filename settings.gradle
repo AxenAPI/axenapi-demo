@@ -30,9 +30,18 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = 'demo'
+// examples for kafka
 include 'axenapilibspringboot2'
 include 'axenapilibspringboot3'
 include 'axenapigeneratorclientspringboot2'
 include 'axenapigeneratorserverspringboot2'
 include 'axenapigeneratorclientspringboot3'
 include 'axenapigeneratorserverspringboot3'
+
+// examples for jms
+include 'axenapiJMSListenerSpringBoot3'
+include 'axenapiJMSProducerSpringBoot3'
+
+// examples for rabbit
+include 'axenapiRabbitListenerSpringBoot3'
+include 'axenapiRabbitProducerSpringBoot3'

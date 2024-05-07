@@ -1,0 +1,66 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.5'
+	id 'io.spring.dependency-management' version '1.1.4'
+	id 'pro.axenix-innovation.axenapi.generator' version('1.0.25-SNAPSHOT')
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '21'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+	mavenLocal()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-amqp'
+
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.amqp:spring-rabbit-test'
+}
+
+compileJava {
+	dependsOn "generateKafka"
+}
+sourceSets {
+	main {
+		java {
+			srcDir '/build/src/main/java'
+		}
+		resources {
+			srcDir '/build/src/main/resources'
+		}
+	}
+}
+
+// for axenapi
+codegenData {   // client
+	openApiPath =  getProjectDir().getAbsolutePath() + '/src/main/resources/api.json'
+	outDir = getProjectDir().getAbsolutePath() + '/build'
+	srcDir = 'src/main/java'
+	listenerPackage = 'axenapi.listener'
+	modelPackage = 'axenapi.model'
+	kafkaClient = true
+	interfaceOnly = false
+//    resultWrapper = 'java.util.concurrent.CompletableFuture'
+	useSpring3 = true
+}
+
+
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
