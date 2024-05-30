@@ -37,8 +37,8 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-web"
     implementation "org.projectlombok:lombok:1.18.26"
 
-    annotationProcessor "pro.axenix-innovation:axenapi:2.0.0"
-    implementation ("pro.axenix-innovation:axenapi:2.0.0")
+    annotationProcessor "pro.axenix-innovation:axenapi:1.0.2-SNAPSHOT"
+    implementation ("pro.axenix-innovation:axenapi:1.0.2-SNAPSHOT")
 
     testImplementation "org.springframework.boot:spring-boot-starter-test"
     implementation "org.springframework.kafka:spring-kafka"

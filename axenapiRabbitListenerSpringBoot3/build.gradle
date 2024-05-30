@@ -36,6 +36,7 @@ dependencies {
 
 // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-json
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-json', version: '3.2.5'
+
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
 
 
