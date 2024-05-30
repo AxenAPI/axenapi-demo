@@ -29,8 +29,8 @@ dependencies {
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
 
     //	swagger for kafka
-    annotationProcessor "pro.axenix-innovation:axenapi:1.0.2-SNAPSHOT"
-    implementation ("pro.axenix-innovation:axenapi:1.0.2-SNAPSHOT")
+    annotationProcessor "pro.axenix-innovation:axenapi:2.0.0"
+    implementation ("pro.axenix-innovation:axenapi:2.0.0")
 
     // https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui
     implementation 'org.springdoc:springdoc-openapi-ui:1.6.13'
