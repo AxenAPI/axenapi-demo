@@ -32,7 +32,7 @@ public class DemoListenerResponse {
 
     @KafkaHandler
     @KafkaHandlerDescription("Принимает  Subordinate. Находится в DemoListener. Ничего не возвращает.")
-    @KafkaHandlerResponse(replayTopic = "response_topic", payload = ExampleMessage.class)
+//    @KafkaHandlerResponse(replayTopic = "response_topic", payload = ExampleMessage.class)
     @KafkaHandlerTags(tags = {"demo"})
     public CompletableFuture<ExampleMessage> appLoanCreate(@Payload Subordinate request,
                                                            @Headers Map<String, Object> headers,

@@ -22,7 +22,7 @@ public class Test1 {
             @KafkaHandlerHeader(header = "header_1", required = true),
             @KafkaHandlerHeader(header = "header_2")
     })
-    @KafkaHandlerResponse(payload = Subordinate.class, replayTopic = "replayTopic")
+//    @KafkaHandlerResponse(payload = Subordinate.class, replayTopic = "replayTopic")
     @KafkaHandlerTags(tags = "test_tag")
     @KafkaSecured
     public void listenGroupFoo(@Payload ExampleMessage message) {
@@ -30,7 +30,7 @@ public class Test1 {
     }
 
     @KafkaHandler
-    @KafkaHandlerResponse(payload = ExampleMessage.class)
+//    @KafkaHandlerResponse(payload = ExampleMessage.class)
     @KafkaSecured(name = "test_security_scheme")
     public void listenGroupFoo(@Payload Subordinate message) {
         System.out.println("Received Message in group foo: " + message);
