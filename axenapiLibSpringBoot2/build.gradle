@@ -8,11 +8,6 @@ plugins {
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 
-repositories {
-    mavenCentral()
-    mavenLocal()
-}
-
 java {
     sourceCompatibility = JavaVersion.VERSION_11
 }
@@ -38,7 +33,9 @@ dependencies {
 
     //	swagger for kafka
     annotationProcessor "pro.axenix-innovation:axenapi:1.0.2-SNAPSHOT"
-    implementation ("pro.axenix-innovation:axenapi:1.0.2-SNAPSHOT")
+    implementation ("pro.axenix-innovation:axenapi:1.0.2-SNAPSHOT"){
+        exclude group: 'org.springdoc'
+    }
 
     // https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui
     implementation 'org.springdoc:springdoc-openapi-ui:1.6.13'
